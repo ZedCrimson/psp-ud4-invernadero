@@ -16,6 +16,24 @@
 
 [**Como Ejecutarlo	3**](#como-ejecutarlo)
 
+[**Captura	3**](#captura)
+
+[**Resultados	3**](#resultados)
+
+[**¿Por qué compensa usar hilos en el invernadero?	4**](#¿por-qué-compensa-usar-hilos-en-el-invernadero?)
+
+[**Experimentos A,B y C.	4**](#experimentos-a,b-y-c.)
+
+[**Estados Observados.	5**](#estados-observados.)
+
+[**¿Por qué termina el programa si el vigilante sigue su bucle?	5**](#¿por-qué-termina-el-programa-si-el-vigilante-sigue-su-bucle?)
+
+[**Thread frente al runneable.	5**](#thread-frente-al-runneable.)
+
+[**¿Porque los sensores sólo pueden ser Runnable en tu diseño?	6**](#¿porque-los-sensores-sólo-pueden-ser-runnable-en-tu-diseño?)
+
+[**¿Qué forma elegirías para el riego y por qué?	6**](#¿qué-forma-elegirías-para-el-riego-y-por-qué?)
+
 ### **Que Hace** {#que-hace}
 
 Basicamente, este programa consiste en una simulación en Java que se dedica al monitoreo y al control de un invernadero automatizado, el cual usa los hilos para la constante lectura de valores mediante el uso de sensores y sistemas de control.
@@ -24,11 +42,11 @@ Basicamente, este programa consiste en una simulación en Java que se dedica al 
 
 Para ejecutar el programa es tan facil como ir al .java de cada fase y ejecutarlo, dando lugar al inicio de cada fase.
 
-### **Captura**
+### **Captura** {#captura}
 
 ![][image1]
 
-### **Resultados**
+### **Resultados** {#resultados}
 
 Fase 1
 
@@ -38,13 +56,13 @@ Fase 2
 
 ![][image3]
 
-### **¿Por qué compensa usar hilos en el invernadero?**
+### **¿Por qué compensa usar hilos en el invernadero?** {#¿por-qué-compensa-usar-hilos-en-el-invernadero?}
 
 Compensa debido a que es mucho mas eficientes ya que hoy en dia se usa procesadores que son multinúcleo, lo cual le podemos asignar a cada hilo un trabajo para que lo haga de manera simultánea.
 
 Además esto hace que se puedan ejecutar a la vez sin que ninguna ejecución que bloquee a otra.
 
-### **Experimentos A,B y C.**
+### **Experimentos A,B y C.** {#experimentos-a,b-y-c.}
 
 En el experimento A, los sensores se ejecutaron uno detrás de otro en vez de hacerlo a la vez.Debido a que se llama directamente al método run y no se crea ningún hilo nuevo.
 
@@ -52,7 +70,7 @@ En el Experimento B, los sensores empezaron a imprimir datos de manera indetermi
 
 En el Experimento C, El hilo espero que terminaran los hilos secundarios antes de terminar.Esto es debido a que el join bloquea al hilo que lo llama hasta que el hilo objetivo termina su función.
 
-### **Estados Observados.**
+### **Estados Observados.** {#estados-observados.}
 
 | Estado | Que Ocurre | Línea que lo ejecuta |
 | :---- | :---- | :---- |
@@ -61,17 +79,17 @@ En el Experimento C, El hilo espero que terminaran los hilos secundarios antes d
 | Timed\_Waiting | Pausa por tiempo determinado | Thread.sleep(1000) |
 | Terminated | Hilo con función completada | Fin de run() |
 
-### **¿Por qué termina el programa si el vigilante sigue su bucle?**
+### **¿Por qué termina el programa si el vigilante sigue su bucle?** {#¿por-qué-termina-el-programa-si-el-vigilante-sigue-su-bucle?}
 
 Esto es debido a que el hilo es terminado debido a que está configurado como un Daemon.
 
-### **Thread frente al runneable.**
+### **Thread frente al runneable.** {#thread-frente-al-runneable.}
 
-### **¿Porque los sensores sólo pueden ser Runnable en tu diseño?**
+### **¿Porque los sensores sólo pueden ser Runnable en tu diseño?** {#¿porque-los-sensores-sólo-pueden-ser-runnable-en-tu-diseño?}
 
 Debido a que Java no permite la herencia múltiple de clases, los sensores no pueden hacer extensiones, así que la única manera de implementarlo es con un runnable.
 
-### **¿Qué forma elegirías para el riego y por qué?** 
+### **¿Qué forma elegirías para el riego y por qué?**  {#¿qué-forma-elegirías-para-el-riego-y-por-qué?}
 
 Usaría la opción runnable, debido a que el controlador del riego queda separada del hilo de ejecución,además que gracias a esto cada sensor puede lanzar señales sin detener la tarea ni bloquear el resto del sistema.
 
